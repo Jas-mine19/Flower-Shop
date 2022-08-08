@@ -96,6 +96,8 @@
         android:layout_margin="25dp"
         android:background="@drawable/bottomnavigation_shape"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:itemRippleColor="@color/white"
+        app:itemIconTint="@color/item_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />

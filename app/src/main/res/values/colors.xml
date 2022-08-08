@@ -15,4 +15,6 @@
     <color name="basket_background">#B4CCC4</color>
     <color name="login_background">#B4CBC3</color>
     <color name="login_text">#628275</color>
+    <color name="icon_navigation">#D5FFF1</color>
+    <color name="checkout_color">#446129</color>
 </resources>

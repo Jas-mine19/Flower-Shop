@@ -18,21 +18,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="180dp"
             android:text="Flowers Shop"
-            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            android:textStyle="bold"
+            />
 
         <EditText
-            android:id="@+id/login"
+            android:id="@+id/full_name"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="45dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edittext_shape"
-            android:hint="Login"
+            android:hint="Full Name"
+            android:paddingStart="20dp" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_shape"
+            android:hint="Username"
             android:paddingStart="20dp" />
 
 
@@ -44,10 +56,10 @@
             android:layout_marginTop="55dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edittext_shape"
-            android:hint="Password"
             android:drawableEnd="@drawable/icon_visibility_off"
-            android:paddingEnd="25dp"
-            android:paddingStart="20dp" />
+            android:hint="Password"
+            android:paddingStart="20dp"
+            android:paddingEnd="25dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -60,34 +72,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don’t have account"
+                android:text="Already have an account?"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/click_here_text"
+                android:id="@+id/sign_in_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="click here"
+                android:text="Sign in"
                 android:textColor="@color/teal_200" />
 
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_button"
+            android:id="@+id/create_account_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="65dp"
-            android:layout_marginEnd="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35dp"
             android:backgroundTint="@color/white"
+            android:text="Create Account"
+            android:textSize="18sp"
             android:textAllCaps="false"
-            android:text="Login"
-            android:textSize="16sp"
-            android:textColor="@color/login_text"
+            android:textColor="@color/button"
             app:cornerRadius="20dp" />
 
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
