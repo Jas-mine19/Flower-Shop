@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="magical">#B2CDC4</color>
+    <color name="button">#628274</color>
+    <color name="main_activity">#FAFAFA</color>
+    <color name="flower_item">#8FA25D</color>
+    <color name="favorite_background">#DAE5E2</color>
+    <color name="basket_background">#B4CCC4</color>
+    <color name="login_background">#B4CBC3</color>
+    <color name="login_text">#628275</color>
+</resources>
