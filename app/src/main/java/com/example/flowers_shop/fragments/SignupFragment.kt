@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.flowers_shop.databinding.FragmentBasketBinding
+import com.example.flowers_shop.R
+import com.example.flowers_shop.databinding.FragmentSignupBinding
 
-class BasketFragment : Fragment() {
+class SignupFragment : Fragment() {
 
 
-    private var _binding: FragmentBasketBinding? = null
+    private var _binding: FragmentSignupBinding? = null
 
     private val binding get() = _binding!!
 
@@ -22,17 +23,20 @@ class BasketFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentBasketBinding.inflate(inflater, container, false)
+        _binding = FragmentSignupBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.backButton.setOnClickListener {
-            findNavController().popBackStack()
+        binding.signInText.setOnClickListener{
+            findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
         }
 
+        binding.createAccountButton.setOnClickListener{
+            findNavController().navigate(R.id.action_signupFragment_to_firstCoverFragment)
+        }
 
     }
 

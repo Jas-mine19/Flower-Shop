@@ -17,4 +17,5 @@
     <color name="login_text">#628275</color>
     <color name="icon_navigation">#D5FFF1</color>
     <color name="checkout_color">#446129</color>
+    <color name="advertising_background">#F8F2DF</color>
 </resources>

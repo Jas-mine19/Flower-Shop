@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.flowers_shop.databinding.FragmentBasketBinding
+import com.example.flowers_shop.databinding.FragmentFavoriteBinding
 
-class BasketFragment : Fragment() {
+class FavoriteFragment : Fragment() {
 
 
-    private var _binding: FragmentBasketBinding? = null
+    private var _binding: FragmentFavoriteBinding? = null
 
     private val binding get() = _binding!!
 
@@ -22,17 +22,18 @@ class BasketFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentBasketBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
+
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.backButton.setOnClickListener {
+
+        binding.backButton.setOnClickListener{
             findNavController().popBackStack()
         }
-
 
     }
 
