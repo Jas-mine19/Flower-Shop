@@ -11,6 +11,7 @@
     <color name="button">#628274</color>
     <color name="main_activity">#FAFAFA</color>
     <color name="flower_item">#8FA25D</color>
+    <color name="green">#8FA25D</color>
     <color name="favorite_background">#DAE5E2</color>
     <color name="basket_background">#B4CCC4</color>
     <color name="login_background">#B4CBC3</color>
@@ -18,4 +19,9 @@
     <color name="icon_navigation">#D5FFF1</color>
     <color name="checkout_color">#446129</color>
     <color name="advertising_background">#F8F2DF</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 </resources>

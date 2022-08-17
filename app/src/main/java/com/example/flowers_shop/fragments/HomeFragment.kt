@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         bottomNav = binding.bottomNavigation
         bottomNav.setOnItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.favorite -> {
                     findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
                 }
@@ -53,12 +53,16 @@ class HomeFragment : Fragment() {
             true
         }
 
-        binding.advertisingRv.setOnClickListener{
+        binding.advertisingRv.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_advertisingFragment2)
         }
 
-        binding.flowerRv.setOnClickListener{
+        binding.flowerRv.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_flowerItemFragment)
+        }
+
+        binding.profileImage.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
         }
     }
 

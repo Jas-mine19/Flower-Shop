@@ -10,28 +10,30 @@ class PreferenceManager(context: Context) {
     private val pref_name = "SharedPreference"
     private val is_login = "is_login"
 
-    val pref: SharedPreferences = context.getSharedPreferences(pref_name,private_mode)
+    val pref: SharedPreferences = context.getSharedPreferences(pref_name, private_mode)
 
-    val editor:SharedPreferences.Editor = pref.edit()
+    val editor: SharedPreferences.Editor = pref.edit()
 
-    fun setLogin(isLogin:Boolean){
-        editor.putBoolean(is_login,isLogin)
+    fun setLogin(isLogin: Boolean) {
+        editor.putBoolean(is_login, isLogin)
         editor.commit()
     }
 
-    fun setUsername(username: String){
-        editor.putString("username",username)
+    fun setUsername(username: String) {
+        editor.putString("username", username)
         editor.commit()
     }
 
-    fun isLogin() :Boolean{
-        return  pref.getBoolean(is_login,false)
-    }
-    fun setUsername() : String? {
-        return  pref.getString("username","")
+    fun isLogin(): Boolean {
+        return pref.getBoolean(is_login, false)
     }
 
-    fun removeData(){
+    fun getUsername(): String? {
+        return pref.getString("username", "")
+    }
+
+
+    fun removeData() {
         editor.clear()
         editor.commit()
     }
