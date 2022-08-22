@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.flowers_shop.R
 import com.example.flowers_shop.databinding.FragmentFlowerItemBinding
 
 class FlowerItemFragment : Fragment() {
@@ -27,6 +29,30 @@ class FlowerItemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var number = 1
+        binding.plusButton.setOnClickListener {
+            if (number >= 0) {
+                number += 1
+                binding.number.setText(number)
+            }
+
+        }
+
+        binding.minusButton.setOnClickListener {
+            if (number >= 0) {
+                number -= 1
+                binding.number.setText(number)
+            }
+        }
+
+        binding.favoriteButton.setOnClickListener {
+            binding.favoriteButton.setImageResource(R.drawable.icon_favorite_selected)
+        }
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+
+        }
 
 
     }
