@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.flowers_shop.PreferenceManager
 import com.example.flowers_shop.R
 import com.example.flowers_shop.databinding.FragmentLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
 
@@ -17,13 +19,8 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var firebaseAuth: FirebaseAuth
 
-    private lateinit var prefManager: PreferenceManager
-    private lateinit var edUsername: EditText
-    private lateinit var edPassword: EditText
-    private lateinit var username: String
-    private lateinit var password: String
-    private var name = ""
 
 
     override fun onCreateView(
@@ -40,35 +37,44 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.clickHereText.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
+            findNavController().navigateUp()
         }
         binding.loginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_firstCoverFragment)
+            val login = binding.login.text.toString()
+            val password = binding.password.text.toString()
+
+            if (login.isNotEmpty() && password.isNotEmpty() ) {
+
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    login,
+                    password
+                )
+                    .addOnCompleteListener() {
+                        if (it.isSuccessful) {
+                            findNavController().navigate(R.id.action_loginFragment_to_firstCoverFragment)
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                it.exception.toString(),
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                    }
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Empty fields",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
         }
 
     }
 
-    private fun init() {
-        prefManager = PreferenceManager(requireContext())
-
-    }
 
 
-    fun clickLogin(view: View) {
-        username = binding.login.text.toString().trim()
-        password = binding.password.text.toString().trim()
-
-        if (username.isEmpty() || username == "") {
-            edUsername.error = "Field is empty"
-            edUsername.requestFocus()
-        } else if (password.isEmpty() || password == "") {
-            edPassword.error = "Field is empty"
-            edPassword.requestFocus()
-        } else {
-            prefManager.setLogin(true)
-            prefManager.setUsername(username)
-        }
-    }
 
 
     override fun onDestroy() {

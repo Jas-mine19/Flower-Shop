@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.flowers_shop.PreferenceManager
 import com.example.flowers_shop.databinding.FragmentAccountBinding
 
@@ -13,6 +14,8 @@ class AccountFragment : Fragment() {
 
     private var _binding: FragmentAccountBinding? = null
     private val binding get() = _binding!!
+    private val args: AccountFragmentArgs by navArgs()
+    private var username = ""
 
 //    val prefManager = PreferenceManager(requireContext())
 
@@ -29,7 +32,9 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //binding.username.text = prefManager.getUsername()
+        username = args.username
+
+        binding.username.text = username
     }
 
     override fun onDestroy() {

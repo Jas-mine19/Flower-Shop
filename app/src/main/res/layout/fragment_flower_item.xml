@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
-            android:background="@color/item_color"
+
             android:src="@drawable/icon_arrow_back_white" />
 
         <ImageButton
@@ -26,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_margin="25dp"
-            android:background="@color/item_color"
             android:src="@drawable/icon_favorite_unselected_white" />
     </Toolbar>
 
@@ -107,12 +106,13 @@
                 android:src="@drawable/icon_add" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/buy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="140dp"
                 android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/checkout_color"
-                android:text="Checkout 65$"
+                android:text="5$"
                 android:textAllCaps="false"
                 app:cornerRadius="20dp" />
 

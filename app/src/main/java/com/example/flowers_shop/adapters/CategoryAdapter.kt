@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flowers_shop.R
 import com.example.flowers_shop.data.Category
+import com.example.flowers_shop.data.Flowers
 
 class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ButtonViewHolder>(
     CategoryDiffUtil()
 ) {
 
     var onItemClick: ((Int) -> Unit)? = null
+    var categoryList: List<Category> = listOf()
+
 
 
     private class CategoryDiffUtil : DiffUtil.ItemCallback<Category>() {
@@ -24,7 +27,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ButtonViewHolder>(
             oldItem: Category,
             newItem: Category
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.categoryId == newItem.categoryId
         }
 
         override fun areContentsTheSame(
@@ -36,7 +39,10 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ButtonViewHolder>(
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ButtonViewHolder =
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): CategoryAdapter.ButtonViewHolder =
         ButtonViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.category_rv_item, parent, false)
@@ -44,7 +50,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ButtonViewHolder>(
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: CategoryAdapter.ButtonViewHolder, position: Int) {
-        holder.button.text = getItem(position).name
+        holder.button.text = getItem(position).categoryName
 
         if (getItem(position).isSelected) {
             holder.button.setBackgroundResource(R.drawable.category_rv_shape_selected)
@@ -54,6 +60,10 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ButtonViewHolder>(
         }
     }
 
+    fun setCategoryListItems(categoryList: List<Category>) {
+        this.categoryList = categoryList;
+        notifyDataSetChanged()
+    }
 
 
     inner class ButtonViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
@@ -61,7 +71,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ButtonViewHolder>(
 
         init {
             view.setOnClickListener {
-                onItemClick?.invoke(getItem(adapterPosition).id)
+                onItemClick?.invoke(getItem(adapterPosition).categoryId)
             }
         }
     }

@@ -15,6 +15,7 @@ class FlowerAdapter : ListAdapter<Flowers, FlowerAdapter.ButtonViewHolder>(
 ) {
 
     var onItemClick: ((Int) -> Unit)? = null
+    var flowerList: List<Flowers> = listOf()
 
 
     private class FlowerDiffUtil : DiffUtil.ItemCallback<Flowers>() {
@@ -22,7 +23,7 @@ class FlowerAdapter : ListAdapter<Flowers, FlowerAdapter.ButtonViewHolder>(
             oldItem: Flowers,
             newItem: Flowers
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.flowerId == newItem.flowerId
         }
 
         override fun areContentsTheSame(
@@ -49,20 +50,22 @@ class FlowerAdapter : ListAdapter<Flowers, FlowerAdapter.ButtonViewHolder>(
 
         init {
             view.setOnClickListener {
-                onItemClick?.invoke(getItem(adapterPosition).id)
+                onItemClick?.invoke(getItem(adapterPosition).flowerId)
             }
         }
     }
 
     override fun onBindViewHolder(holder: ButtonViewHolder, position: Int) {
-            if (getItem(position).isFavorite) {
+        if (getItem(position).isFavorite) {
             holder.button.setImageResource(R.drawable.icon_favorite_selected)
 
         } else {
             holder.button.setImageResource(R.drawable.icon_favorite_unselected)
         }
+    }
 
-
-
+    fun setFlowerListItems(FlowerList: List<Flowers>) {
+        this.flowerList = flowerList;
+        notifyDataSetChanged()
     }
 }

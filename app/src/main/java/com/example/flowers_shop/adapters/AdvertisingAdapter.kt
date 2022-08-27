@@ -11,10 +11,11 @@ import com.example.flowers_shop.R
 import com.example.flowers_shop.data.Advertising
 
 class AdvertisingAdapter : ListAdapter<Advertising, AdvertisingAdapter.ButtonViewHolder>(
-AdvertisingDiffUtil()
+    AdvertisingDiffUtil()
 ) {
 
     var onItemClick: ((Int) -> Unit)? = null
+    var advertisingList: List<Advertising> = listOf()
 
 
     private class AdvertisingDiffUtil : DiffUtil.ItemCallback<Advertising>() {
@@ -22,7 +23,7 @@ AdvertisingDiffUtil()
             oldItem: Advertising,
             newItem: Advertising
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.cardId == newItem.cardId
         }
 
         override fun areContentsTheSame(
@@ -34,13 +35,14 @@ AdvertisingDiffUtil()
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdvertisingAdapter.ButtonViewHolder =
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AdvertisingAdapter.ButtonViewHolder =
         ButtonViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.category_rv_item, parent, false)
         )
-
-
 
 
     inner class ButtonViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
@@ -48,7 +50,7 @@ AdvertisingDiffUtil()
 
         init {
             view.setOnClickListener {
-                onItemClick?.invoke(getItem(adapterPosition).id)
+                onItemClick?.invoke(getItem(adapterPosition).cardId)
             }
         }
     }
@@ -56,5 +58,10 @@ AdvertisingDiffUtil()
     override fun onBindViewHolder(holder: ButtonViewHolder, position: Int) {
         holder.button.text = getItem(position).discount.toString()
 
+    }
+
+    fun setAdvertisingListItems(categoryList: List<Advertising>) {
+        this.advertisingList = categoryList;
+        notifyDataSetChanged()
     }
 }

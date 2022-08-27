@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.flowers_shop.R
@@ -33,15 +34,17 @@ class FlowerItemFragment : Fragment() {
         binding.plusButton.setOnClickListener {
             if (number >= 0) {
                 number += 1
-                binding.number.setText(number)
+                binding.number.setText(number.toString())
             }
 
         }
 
         binding.minusButton.setOnClickListener {
-            if (number >= 0) {
+            if (number >= 1) {
                 number -= 1
-                binding.number.setText(number)
+                binding.number.setText(number.toString())
+            } else {
+                onStop()
             }
         }
 
@@ -51,7 +54,10 @@ class FlowerItemFragment : Fragment() {
 
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
+        }
 
+        binding.buy.setOnClickListener{
+            //Toast.makeText(this,"Add to basket",Toast.LENGTH_SHORT)
         }
 
 
