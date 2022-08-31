@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth
 
 class FirstCoverFragment : Fragment() {
 
-
     private var _binding: FragmentFirstCoverBinding? = null
     private val binding get() = _binding!!
 
@@ -37,9 +36,6 @@ class FirstCoverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-                requireActivity().finish()
-            }
             startButton.setOnClickListener {
                 val direction =
                     FirstCoverFragmentDirections.actionFirstCoverFragmentToHomeFragment()

@@ -43,6 +43,7 @@
                 app:layout_collapseMode="pin">
 
                 <ImageButton
+                    android:id="@+id/back_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/advertising_background"
@@ -61,12 +62,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:minHeight="400dp"
             android:background="@drawable/bottom_sheet">
 
             <TextView
                 android:id="@+id/flower_information"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="18dp"
@@ -74,7 +76,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="@tools:sample/lorem/random" />
+                tools:text="" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

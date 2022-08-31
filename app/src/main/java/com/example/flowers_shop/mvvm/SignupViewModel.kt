@@ -1,10 +1,10 @@
 package com.example.flowers_shop.mvvm
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flowers_shop.data.Api
-import com.example.flowers_shop.data.Basket
 import com.example.flowers_shop.data.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,40 +12,42 @@ import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
-class BasketViewModel : ViewModel() {
+
+class SignupViewModel : ViewModel() {
+
     private val apiInterface = Api().create()
 
-    private val _basketLiveData = MutableLiveData<Boolean>()
-    val basketLiveData = _basketLiveData
+    private val _signupLiveData = MutableLiveData<Boolean>()
+    val signupLiveData = _signupLiveData
 
-    private val _errorBasketLiveData = MutableLiveData<String>()
-    val errorBasketLiveData = _errorBasketLiveData
+    private val _errorSignupLiveData = MutableLiveData<String>()
+    val errorSignupLiveData = _errorSignupLiveData
+
+    // progressBar
 
 
-    fun createBasket(basket: Basket) {
+    fun createUser(user: User) {
         viewModelScope.launch {
-            getResponse(basket)
+            getResponse(user)
         }
     }
 
-    private suspend fun getResponse(basket: Basket) = withContext(Dispatchers.IO) {
-        apiInterface.createBasket(basket).enqueue(object : Callback<String> {
+    private suspend fun getResponse(user: User) = withContext(Dispatchers.IO) {
+        apiInterface.registerUser(user).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    _basketLiveData.postValue(true)
+                    _signupLiveData.postValue(true)
                 } else {
-                    _errorBasketLiveData.postValue(response.message().toString())
+                    _errorSignupLiveData.postValue(response.message().toString())
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                _errorBasketLiveData.postValue(t.message.toString())
+                _errorSignupLiveData.postValue(t.message.toString())
             }
 
         })
     }
-
 
 }

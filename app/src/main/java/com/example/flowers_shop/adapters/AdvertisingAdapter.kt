@@ -3,18 +3,19 @@ package com.example.flowers_shop.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.flowers_shop.R
 import com.example.flowers_shop.data.Advertising
+import com.example.flowers_shop.databinding.AdvertisingItemBinding
 
 class AdvertisingAdapter : ListAdapter<Advertising, AdvertisingAdapter.ButtonViewHolder>(
     AdvertisingDiffUtil()
 ) {
 
-    var onItemClick: ((Int) -> Unit)? = null
+    var onItemClick: ((Advertising) -> Unit)? = null
     var advertisingList: List<Advertising> = listOf()
 
 
@@ -41,27 +42,37 @@ class AdvertisingAdapter : ListAdapter<Advertising, AdvertisingAdapter.ButtonVie
     ): AdvertisingAdapter.ButtonViewHolder =
         ButtonViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.category_rv_item, parent, false)
+                .inflate(R.layout.advertising_item, parent, false)
         )
 
 
     inner class ButtonViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val button: TextView = view.findViewById(R.id.percent)
+        val binding = AdvertisingItemBinding.bind(view)
 
         init {
             view.setOnClickListener {
-                onItemClick?.invoke(getItem(adapterPosition).cardId)
+                onItemClick?.invoke(getItem(adapterPosition))
             }
         }
     }
 
     override fun onBindViewHolder(holder: ButtonViewHolder, position: Int) {
-        holder.button.text = getItem(position).discount.toString()
+        holder.binding.percent.text = getItem(position).discount
 
+        holder.binding.apply {
+            if(getItem(position).cardimage != null) {
+                Glide
+                    .with(holder.itemView.context)
+                    .load(getItem(position).cardimage)
+                    .centerCrop()
+                    .into(advertiBackground)
+            } else {
+                holder.binding.advertiBackground.setImageResource(R.drawable.background_advert)
+            }
+            percent.text = getItem(position).discount
+
+        }
     }
 
-    fun setAdvertisingListItems(categoryList: List<Advertising>) {
-        this.advertisingList = categoryList;
-        notifyDataSetChanged()
-    }
+
 }

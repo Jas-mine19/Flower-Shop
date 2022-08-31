@@ -20,12 +20,29 @@
         android:id="@+id/flowerItemFragment"
         android:name="com.example.flowers_shop.fragments.FlowerItemFragment"
         android:label="fragment_flower_item"
-        tools:layout="@layout/fragment_flower_item" />
+        tools:layout="@layout/fragment_flower_item" >
+        <argument
+            android:name="flowername"
+            app:argType="string" />
+        <argument
+            android:name="flowerprice"
+            app:argType="integer" />
+        <argument
+            android:name="flowerinformation"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/advertisingFragment2"
         android:name="com.example.flowers_shop.fragments.AdvertisingFragment"
         android:label="fragment_advertising"
-        tools:layout="@layout/fragment_advertising" />
+        tools:layout="@layout/fragment_advertising" >
+        <argument
+            android:name="discount"
+            app:argType="string" />
+        <argument
+            android:name="information"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/basketFragment"
         android:name="com.example.flowers_shop.fragments.BasketFragment"

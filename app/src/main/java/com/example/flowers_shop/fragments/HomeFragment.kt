@@ -1,6 +1,7 @@
 package com.example.flowers_shop.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,9 +56,15 @@ class HomeFragment : Fragment() {
         BottomNav()
     }
 
+    private fun categoriesList(categoryId: Int) {
+        viewModel.getUpdateCategory(categoryId)
+    }
+
+
     private fun setUpObserves() {
         viewModel.categoryLiveData.observe(viewLifecycleOwner) {
             categoryAdapter.submitList(it)
+            categoriesList(it[0].categoryId)
         }
 
         viewModel.advertisingLiveData.observe(viewLifecycleOwner) {
@@ -70,13 +77,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpListeners() {
-        binding.advertisingRv.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_advertisingFragment2)
-        }
 
-        binding.flowerRv.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_flowerItemFragment)
-        }
 
         binding.profileImage.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
@@ -85,10 +86,28 @@ class HomeFragment : Fragment() {
 
     private fun setUpAdapters() {
         categoryAdapter = CategoryAdapter()
+        categoryAdapter.onItemClick = {
+            categoriesList(it)
+        }
         binding.categoryRv.adapter = categoryAdapter
         advertisingAdapter = AdvertisingAdapter()
+        advertisingAdapter.onItemClick = {
+            val action = HomeFragmentDirections.actionHomeFragmentToAdvertisingFragment2(
+                it.discount,
+                it.information
+            )
+            findNavController().navigate(action)
+        }
         binding.advertisingRv.adapter = advertisingAdapter
         flowerAdapter = FlowerAdapter()
+        flowerAdapter.onItemClick = {
+            val action = HomeFragmentDirections.actionHomeFragmentToFlowerItemFragment(
+                it.flowerName,
+                it.flowerPrice,
+                it.flowerInformation
+            )
+            findNavController().navigate(action)
+        }
         binding.flowerRv.adapter = flowerAdapter
     }
 

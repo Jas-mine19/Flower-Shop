@@ -4,17 +4,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.findFragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.flowers_shop.R
 import com.example.flowers_shop.data.Flowers
+import com.example.flowers_shop.databinding.FlowerRvItemBinding
 
 class FlowerAdapter : ListAdapter<Flowers, FlowerAdapter.ButtonViewHolder>(
     FlowerDiffUtil()
 ) {
 
-    var onItemClick: ((Int) -> Unit)? = null
+    var onItemClick: ((Flowers) -> Unit)? = null
     var flowerList: List<Flowers> = listOf()
 
 
@@ -41,31 +44,40 @@ class FlowerAdapter : ListAdapter<Flowers, FlowerAdapter.ButtonViewHolder>(
     ): FlowerAdapter.ButtonViewHolder =
         ButtonViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.category_rv_item, parent, false)
+                .inflate(R.layout.flower_rv_item, parent, false)
         )
 
 
     inner class ButtonViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val button: ImageView = view.findViewById(R.id.favorite_button)
+        val binding = FlowerRvItemBinding.bind(view)
 
         init {
             view.setOnClickListener {
-                onItemClick?.invoke(getItem(adapterPosition).flowerId)
+                onItemClick?.invoke(getItem(adapterPosition))
             }
         }
     }
 
     override fun onBindViewHolder(holder: ButtonViewHolder, position: Int) {
         if (getItem(position).isFavorite) {
-            holder.button.setImageResource(R.drawable.icon_favorite_selected)
+            holder.binding.favoriteButton.setImageResource(R.drawable.icon_favorite_selected)
 
         } else {
-            holder.button.setImageResource(R.drawable.icon_favorite_unselected)
+            holder.binding.favoriteButton.setImageResource(R.drawable.icon_favorite_unselected)
+        }
+        holder.binding.apply {
+            if(getItem(position).imageURL != null) {
+                Glide
+                    .with(holder.itemView.context)
+                    .load(getItem(position).imageURL)
+                    .centerCrop()
+                    .into(image)
+            } else {
+                holder.binding.image.setImageResource(R.drawable.background_advert)
+            }
+            flowerName.text = getItem(position).flowerName
+            price.text = getItem(position).flowerPrice.toString()
         }
     }
 
-    fun setFlowerListItems(FlowerList: List<Flowers>) {
-        this.flowerList = flowerList;
-        notifyDataSetChanged()
-    }
 }

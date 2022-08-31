@@ -9,6 +9,7 @@ import com.example.flowers_shop.data.Advertising
 import com.example.flowers_shop.data.Api
 import com.example.flowers_shop.data.Category
 import com.example.flowers_shop.data.Flowers
+import com.google.android.gms.common.logging.Logger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -53,6 +54,39 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+
+    fun getUpdateCategory(categoryId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = apiInterface.getUpdateFlower(categoryId)
+            try {
+                if (response.body() != null) {
+                    _flowerLiveData.postValue(response.body())
+                } else {
+                    _errorFlowerLiveData.postValue("Response is null!")
+                }
+
+            } catch (e: Exception) {
+                _errorFlowerLiveData.postValue("")
+            }
+        }
+    }
+
+    fun getFlowerById(flowerId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = apiInterface.getFlowerById()
+            try {
+                if (response.body() != null) {
+                    _flowerLiveData.postValue(response.body())
+                } else {
+                    _errorFlowerLiveData.postValue("Response is null!")
+                }
+
+            } catch (e: Exception) {
+                _errorFlowerLiveData.postValue("")
+            }
+        }
+    }
+
 
     fun getAdvertisingList() {
         viewModelScope.launch(Dispatchers.IO) {

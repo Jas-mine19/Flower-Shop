@@ -1,6 +1,7 @@
 package com.example.flowers_shop.adapters
 
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,18 +10,17 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.flowers_shop.R
 import com.example.flowers_shop.data.Category
 import com.example.flowers_shop.data.Flowers
+import com.example.flowers_shop.databinding.CategoryRvItemBinding
 
 class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ButtonViewHolder>(
     CategoryDiffUtil()
 ) {
 
     var onItemClick: ((Int) -> Unit)? = null
-    var categoryList: List<Category> = listOf()
-
-
 
     private class CategoryDiffUtil : DiffUtil.ItemCallback<Category>() {
         override fun areItemsTheSame(
@@ -50,24 +50,25 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ButtonViewHolder>(
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: CategoryAdapter.ButtonViewHolder, position: Int) {
-        holder.button.text = getItem(position).categoryName
-
+        holder.binding.apply {
+            categoryName.text = getItem(position).categoryName
+            if(getItem(position).imageUrl != null) {
+                Glide
+                    .with(holder.itemView.context)
+                    .load(getItem(position).imageUrl)
+                    .centerCrop()
+                    .into(image)
+            }
+        }
         if (getItem(position).isSelected) {
-            holder.button.setBackgroundResource(R.drawable.category_rv_shape_selected)
-
+            holder.binding.image.setBackgroundResource(R.drawable.category_rv_shape_selected)
         } else {
-            holder.button.setBackgroundResource(R.drawable.category_rv_item_shape_unselected)
+            holder.binding.image.setBackgroundResource(R.drawable.category_rv_item_shape_unselected)
         }
     }
 
-    fun setCategoryListItems(categoryList: List<Category>) {
-        this.categoryList = categoryList;
-        notifyDataSetChanged()
-    }
-
-
     inner class ButtonViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val button: TextView = view.findViewById(R.id.name)
+        val binding = CategoryRvItemBinding.bind(view)
 
         init {
             view.setOnClickListener {

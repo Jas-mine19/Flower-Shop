@@ -13,9 +13,6 @@
         android:icon="@drawable/icon_shopping_basket"
         android:title="Basket"
         />
-    <item
-        android:id="@+id/history"
-        android:icon="@drawable/icon_history"
-        android:title="History"/>
+
 
 </menu>

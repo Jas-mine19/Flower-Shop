@@ -39,9 +39,8 @@ class BasketFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setOnClickListener()
-        setUpObserves()
+
         setUpAdapter()
-        getBasket()
 
 
     }
@@ -51,15 +50,10 @@ class BasketFragment : Fragment() {
         binding.basketRv.adapter = basketAdapter
     }
 
-    private fun setUpObserves() {
-        viewModel.basketLiveData.observe(viewLifecycleOwner) {
-            basketAdapter.submitList(it)
-        }
-    }
 
-    private fun getBasket() {
-        viewModel.getBasketList()
-    }
+
+
+
 
     private fun setOnClickListener() {
         binding.backButton.setOnClickListener {
