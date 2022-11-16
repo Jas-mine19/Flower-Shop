@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.flowers_shop.R
 import com.example.flowers_shop.data.Basket
 import com.example.flowers_shop.data.User
@@ -22,8 +23,9 @@ class FlowerItemFragment : Fragment() {
     private var _binding: FragmentFlowerItemBinding? = null
     private val binding get() = _binding!!
     private var flowername = ""
-    private var flowerprice by Delegates.notNull<Int>()
+    private var flowerprice = ""
     private var flowerinformation = ""
+    private var flowerimage = ""
     private lateinit var viewModel: BasketViewModel
 
     override fun onCreateView(
@@ -51,6 +53,9 @@ class FlowerItemFragment : Fragment() {
             if (number >= 0) {
                 number += 1
                 binding.number.setText(number.toString())
+                var price = flowerprice.toInt()
+                var num = number * price
+                binding.buy.text = num.toString()
             }
 
         }
@@ -59,6 +64,9 @@ class FlowerItemFragment : Fragment() {
             if (number >= 1) {
                 number -= 1
                 binding.number.setText(number.toString())
+                var price = flowerprice.toInt()
+                val num = (price * (number + 1)) - price
+                binding.buy.text = num.toString()
             } else {
                 onStop()
             }
@@ -105,9 +113,16 @@ class FlowerItemFragment : Fragment() {
         val args = FlowerItemFragmentArgs.fromBundle(requireArguments())
         flowername = args.flowername
         flowerprice = args.flowerprice
+        flowerimage = args.flowerimage
         flowerinformation = args.flowerinformation
         binding.flowerName.text = flowername
         binding.flowerInformation.text = flowerinformation
+        binding.buy.text = flowerprice
+        Glide
+            .with(binding.image.context)
+            .load(flowerimage)
+            .into(binding.image)
+
     }
 
 

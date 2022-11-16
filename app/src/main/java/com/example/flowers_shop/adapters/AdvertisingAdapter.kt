@@ -65,9 +65,9 @@ class AdvertisingAdapter : ListAdapter<Advertising, AdvertisingAdapter.ButtonVie
                     .with(holder.itemView.context)
                     .load(getItem(position).cardimage)
                     .centerCrop()
-                    .into(advertiBackground)
+                    .into(advertisingBackground)
             } else {
-                holder.binding.advertiBackground.setImageResource(R.drawable.background_advert)
+                holder.binding.advertisingBackground.setImageResource(R.drawable.background_advert)
             }
             percent.text = getItem(position).discount
 

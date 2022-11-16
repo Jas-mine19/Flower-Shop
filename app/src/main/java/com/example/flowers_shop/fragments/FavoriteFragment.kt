@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.flowers_shop.MainActivity
 import com.example.flowers_shop.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
@@ -30,13 +31,19 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //  (activity as MainActivity).hideBottomNav()
 
-        binding.backButton.setOnClickListener{
+
+        binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
 
     }
 
+//    override fun onDetach() {
+//        super.onDetach()
+//        (activity as MainActivity).showBottomNav()
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

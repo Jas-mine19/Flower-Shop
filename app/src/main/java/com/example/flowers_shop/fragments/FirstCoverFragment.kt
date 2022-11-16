@@ -38,7 +38,7 @@ class FirstCoverFragment : Fragment() {
         binding.apply {
             startButton.setOnClickListener {
                 val direction =
-                    FirstCoverFragmentDirections.actionFirstCoverFragmentToHomeFragment()
+                    FirstCoverFragmentDirections.actionFirstCoverFragmentToMainFragment2()
                 findNavController().navigate(direction)
             }
 

@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.flowers_shop.PreferenceManager
 import com.example.flowers_shop.R
 import com.example.flowers_shop.data.User
 import com.example.flowers_shop.databinding.FragmentSignupBinding
@@ -23,6 +25,8 @@ class SignupFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: SignupViewModel
+    private lateinit var prefManager:PreferenceManager
+
 
 
     override fun onCreateView(
@@ -47,6 +51,7 @@ class SignupFragment : Fragment() {
     private fun setOnClickListener() {
         binding.signInText.setOnClickListener {
             findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
+
         }
 
         binding.createAccountButton.setOnClickListener {
@@ -55,11 +60,17 @@ class SignupFragment : Fragment() {
             val password = binding.password.text.toString()
             val password2 = binding.password2.text.toString()
 
+            val direction = SignupFragmentDirections.actionSignupFragmentToAccountFragment(username,login,password)
+            findNavController().navigate(direction)
+
             if (login.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty() && password2.isNotEmpty()) {
                 if (password == password2) {
                     viewModel.signupLiveData.observe(viewLifecycleOwner) {
                         if (it) {
                             findNavController().navigate(R.id.action_signupFragment_to_firstCoverFragment)
+                        }
+                        if (it){
+                            prefManager.setLogin(true)
                         }
                     }
                     viewModel.errorSignupLiveData.observe(viewLifecycleOwner) {

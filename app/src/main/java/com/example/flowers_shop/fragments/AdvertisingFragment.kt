@@ -8,6 +8,7 @@ import androidx.browser.trusted.TrustedWebActivityDisplayMode.fromBundle
 import androidx.browser.trusted.sharing.ShareData.fromBundle
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.flowers_shop.databinding.FragmentAdvertisingBinding
 import com.example.flowers_shop.fragments.AdvertisingFragmentArgs.Companion.fromBundle
 
@@ -17,6 +18,7 @@ class AdvertisingFragment : Fragment() {
     private var _binding: FragmentAdvertisingBinding? = null
 
     private val binding get() = _binding!!
+    var cardimage =""
     var discount = ""
     var information = ""
 
@@ -37,13 +39,21 @@ class AdvertisingFragment : Fragment() {
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
+        launchFlower()
 
     }
 
     private fun launchFlower() {
         val args = AdvertisingFragmentArgs.fromBundle(requireArguments())
+        cardimage = args.cardimage
         discount = args.discount
         information = args.information
+        binding.flowerInformation.text = information
+        binding.discount.text = discount
+        Glide
+            .with(binding.imageView.context)
+            .load(cardimage)
+            .into(binding.imageView)
     }
 
     override fun onDestroy() {

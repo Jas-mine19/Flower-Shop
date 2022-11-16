@@ -1,7 +1,6 @@
 package com.example.flowers_shop.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,13 +20,10 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var bottomNav: BottomNavigationView
-
     private lateinit var categoryAdapter: CategoryAdapter
-
     private lateinit var flowerAdapter: FlowerAdapter
-
     private lateinit var advertisingAdapter: AdvertisingAdapter
+
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -53,7 +49,7 @@ class HomeFragment : Fragment() {
         getCategory()
         getAdvertising()
         getFlower()
-        BottomNav()
+
     }
 
     private fun categoriesList(categoryId: Int) {
@@ -77,11 +73,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpListeners() {
-
-
-        binding.profileImage.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_accountFragment)
+        binding.profileImage.setOnClickListener{
+         findNavController().navigate(R.id.accountFragment)
         }
+        binding.searching.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment2_to_searchFragment2)
+        }
+
     }
 
     private fun setUpAdapters() {
@@ -92,19 +90,21 @@ class HomeFragment : Fragment() {
         binding.categoryRv.adapter = categoryAdapter
         advertisingAdapter = AdvertisingAdapter()
         advertisingAdapter.onItemClick = {
-            val action = HomeFragmentDirections.actionHomeFragmentToAdvertisingFragment2(
+            val action = MainFragmentDirections.actionMainFragment2ToAdvertisingFragment2(
                 it.discount,
-                it.information
+                it.information,
+                it.cardimage.toString()
             )
             findNavController().navigate(action)
         }
         binding.advertisingRv.adapter = advertisingAdapter
         flowerAdapter = FlowerAdapter()
         flowerAdapter.onItemClick = {
-            val action = HomeFragmentDirections.actionHomeFragmentToFlowerItemFragment(
+            val action = MainFragmentDirections.actionMainFragment2ToFlowerItemFragment(
                 it.flowerName,
                 it.flowerPrice,
-                it.flowerInformation
+                it.flowerInformation,
+                it.imageURL.toString()
             )
             findNavController().navigate(action)
         }
@@ -123,27 +123,9 @@ class HomeFragment : Fragment() {
         viewModel.getFlowerList()
     }
 
-    private fun BottomNav() {
-        bottomNav = binding.bottomNavigation
-        bottomNav.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.favorite -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
-                }
-                R.id.basket -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_basketFragment)
-                }
 
-            }
-            true
-        }
 
-    }
 
-    override fun onResume() {
-        super.onResume()
-        bottomNav.selectedItemId = R.id.home
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -8,13 +8,13 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiInterface {
-    @GET("category/categories")
+    @GET("categories")
     suspend fun getCategory(): Response<List<Category>>
 
-    @GET("flower/flowers")
+    @GET("flowers")
     suspend fun getFlower(): Response<List<Flowers>>
 
-    @GET("advertising/advertisings")
+    @GET("advertising")
     suspend fun getAdvertising(): Response<List<Advertising>>
 
     @GET("basket/baskets")
@@ -23,10 +23,10 @@ interface ApiInterface {
     @GET("favorite/favorites")
     suspend fun getFavorite(): Response<List<Favorite>>
 
-    @GET("flower/flower/{id}")
+    @GET("flower/{id}")
     suspend fun getFlowerById(): Response<List<Flowers>>
 
-    @GET ("flower/categorylist/{catid}")
+    @GET ("categorylist/{catid}")
     suspend fun getUpdateFlower(@Path("catid") categoryId: Int) : Response<List<Flowers>>
 
     @POST("user/new")

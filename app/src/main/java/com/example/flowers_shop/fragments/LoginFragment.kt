@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.flowers_shop.PreferenceManager
 import com.example.flowers_shop.R
 import com.example.flowers_shop.databinding.FragmentLoginBinding
 import com.example.flowers_shop.mvvm.LoginViewModel
-import com.example.flowers_shop.mvvm.SignupViewModel
-import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
 
@@ -21,6 +21,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: LoginViewModel
+    private lateinit var prefManager: PreferenceManager
 
 
     override fun onCreateView(
@@ -39,14 +40,21 @@ class LoginFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         setOnClickListener()
+        init()
 
+
+    }
+
+    private fun init() {
+        prefManager = PreferenceManager(requireContext())
     }
 
 
     private fun setOnClickListener() {
         binding.clickHereText.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.signupFragment)
         }
+
 
         binding.loginButton.setOnClickListener {
             val login = binding.login.text.toString()
@@ -55,10 +63,9 @@ class LoginFragment : Fragment() {
             if (login.isNotEmpty() && password.isNotEmpty()) {
 
 
-
                 viewModel.loginLiveData.observe(viewLifecycleOwner) {
                     if (it) {
-                        findNavController().navigate(R.id.action_loginFragment_to_firstCoverFragment)
+                        findNavController().navigate(R.id.home)
                     } else {
                         Toast.makeText(
                             requireContext(),

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.flowers_shop.MainActivity
 import com.example.flowers_shop.adapters.BasketAdapter
 import com.example.flowers_shop.adapters.CategoryAdapter
 import com.example.flowers_shop.databinding.FragmentBasketBinding
@@ -37,7 +38,7 @@ class BasketFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+       // (activity as MainActivity).hideBottomNav()
         setOnClickListener()
 
         setUpAdapter()
@@ -51,16 +52,16 @@ class BasketFragment : Fragment() {
     }
 
 
-
-
-
-
     private fun setOnClickListener() {
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
     }
 
+//    override fun onDetach() {
+//        super.onDetach()
+//        (activity as MainActivity).showBottomNav()
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

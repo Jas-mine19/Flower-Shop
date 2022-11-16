@@ -14,7 +14,7 @@ class Api {
     private val retrofit = Retrofit
         .Builder()
         .client(OkHttpClient.Builder().addInterceptor(interceptor).build())
-        .baseUrl("http://10.0.2.2:4000/api/")
+        .baseUrl("https://63625bc67521369cd06b7b46.mockapi.io/api/v1/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

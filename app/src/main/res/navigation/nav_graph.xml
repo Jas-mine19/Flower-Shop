@@ -3,44 +3,75 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signupFragment">
-
+    app:startDestination="@id/home"
+    >
     <fragment
-        android:id="@+id/firstCoverFragment"
-        android:name="com.example.flowers_shop.fragments.FirstCoverFragment"
-        android:label="fragment_first_cover"
-        tools:layout="@layout/fragment_first_cover" >
+        android:id="@+id/mainFragment2"
+        android:name="com.example.flowers_shop.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_firstCoverFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/signupFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_mainFragment2_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_mainFragment2_to_basketFragment"
+            app:destination="@id/basketFragment" />
+        <action
+            android:id="@+id/action_mainFragment2_to_favorite"
+            app:destination="@id/favorite" />
+        <action
+            android:id="@+id/action_mainFragment2_to_advertisingFragment2"
+            app:destination="@id/advertisingFragment2" />
+        <action
+            android:id="@+id/action_mainFragment2_to_flowerItemFragment"
+            app:destination="@id/flowerItemFragment" />
+        <action
+            android:id="@+id/action_mainFragment2_to_searchFragment2"
+            app:destination="@id/searchFragment2" />
+        <action
+            android:id="@+id/action_mainFragment2_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/flowerItemFragment"
         android:name="com.example.flowers_shop.fragments.FlowerItemFragment"
         android:label="fragment_flower_item"
-        tools:layout="@layout/fragment_flower_item" >
+        tools:layout="@layout/fragment_flower_item">
         <argument
             android:name="flowername"
             app:argType="string" />
         <argument
             android:name="flowerprice"
-            app:argType="integer" />
+            app:argType="string" />
         <argument
             android:name="flowerinformation"
             app:argType="string" />
+        <argument
+            android:name="flowerimage"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="com.example.flowers_shop.fragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment2_to_flowerItemFragment"
+            app:destination="@id/flowerItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/advertisingFragment2"
         android:name="com.example.flowers_shop.fragments.AdvertisingFragment"
         android:label="fragment_advertising"
-        tools:layout="@layout/fragment_advertising" >
+        tools:layout="@layout/fragment_advertising">
         <argument
             android:name="discount"
             app:argType="string" />
         <argument
             android:name="information"
+            app:argType="string" />
+        <argument
+            android:name="cardimage"
             app:argType="string" />
     </fragment>
     <fragment
@@ -49,65 +80,70 @@
         android:label="fragment_basket"
         tools:layout="@layout/fragment_basket" />
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/home"
         android:name="com.example.flowers_shop.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_flowerItemFragment"
-            app:destination="@id/flowerItemFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_advertisingFragment2"
-            app:destination="@id/advertisingFragment2" />
-        <action
-            android:id="@+id/action_homeFragment_to_favoriteFragment2"
-            app:destination="@id/favoriteFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_basketFragment"
-            app:destination="@id/basketFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_accountFragment"
-            app:destination="@id/accountFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home"/>
     <fragment
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/favorite"
         android:name="com.example.flowers_shop.fragments.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/firstCoverFragment"
+        android:name="com.example.flowers_shop.fragments.FirstCoverFragment"
+        android:label="fragment_first_cover"
+        tools:layout="@layout/fragment_first_cover">
+        <action
+            android:id="@+id/action_firstCoverFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.flowers_shop.fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_firstCoverFragment"
-            app:destination="@id/firstCoverFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment"
+            app:popUpTo="@id/signupFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.example.flowers_shop.fragments.SignupFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" >
+        tools:layout="@layout/fragment_signup">
         <action
             android:id="@+id/action_signupFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment" />
         <action
             android:id="@+id/action_signupFragment_to_firstCoverFragment"
             app:destination="@id/firstCoverFragment"
-            app:popUpTo="@id/signupFragment"
+            app:popUpTo="@id/firstCoverFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_signupFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.flowers_shop.fragments.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" >
-        <argument android:name="username"
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_accountFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="login"
+            app:argType="string" />
+        <argument
+            android:name="password"
             app:argType="string" />
     </fragment>
+
 </navigation>
