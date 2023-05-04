@@ -6,8 +6,26 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
     <color name="magical">#B2CDC4</color>
+
+    <!--Fluorite Blue-->
+    <color name="fluorite_blue1">#f2f6f5</color>
+    <color name="fluorite_blue2">#d1dfda</color>
+    <color name="fluorite_blue10">#c2d5ce</color>
+    <color name="fluorite_blue15">#b4cbc3</color>
+    <color name="fluorite_blue20">#a5c1b7</color>
+    <color name="fluorite_blue25">#8db0a4</color>
+    <color name="fluorite_blue30">#6c9989</color>
+    <color name="fluorite_blue35">#567d6f</color>
+    <color name="fluorite_blue40">#426056</color>
+
+
+    <!--White-->
+    <color name="white">#ffffff</color>
+
+
+
     <color name="button">#628274</color>
     <color name="main_activity">#FAFAFA</color>
     <color name="flower_item">#8FA25D</color>

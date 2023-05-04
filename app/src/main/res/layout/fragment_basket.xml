@@ -26,15 +26,26 @@
                 android:background="@color/basket_background"
                 android:src="@drawable/icon_arrow_back_black" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Basket"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05"/>
+
         </Toolbar>
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/basket_rv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/basket_rv_item" />
@@ -50,8 +61,8 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/white"
             android:text="Buy"
             android:textColor="@color/flower_item"
