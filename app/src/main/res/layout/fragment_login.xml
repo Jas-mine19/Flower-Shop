@@ -85,7 +85,7 @@
             android:textAllCaps="false"
             android:textColor="@color/login_text"
             android:textSize="16sp"
-            app:cornerRadius="20dp" />
+            app:cornerRadius="10dp" />
 
 
     </LinearLayout>

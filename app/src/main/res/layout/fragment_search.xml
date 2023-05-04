@@ -10,29 +10,29 @@
         android:id="@+id/search_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/car_ui_icon_arrow_back"
-        android:background="@color/white"
-        android:layout_marginTop="13dp"
-        android:layout_marginStart="5dp"/>
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/car_ui_icon_arrow_back" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_flower"
-        android:layout_width="350dp"
-        android:layout_marginStart="8dp"
-        android:focusable="true"
-        app:iconifiedByDefault="true"
-        android:clickable="true"
-        android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_flower"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:iconifiedByDefault="true" />
     </LinearLayout>
 
 

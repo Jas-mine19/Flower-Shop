@@ -17,22 +17,21 @@
             android:layout_height="match_parent"
             android:background="@color/favorite_background">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/back_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_margin="20dp"
-                android:background="@color/favorite_background"
                 android:src="@drawable/icon_arrow_back_black" />
         </Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/favorite_r"
-            android:layout_width="wrap_content"
+            android:id="@+id/favoriteRv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="12dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/favorite_rv_item" />

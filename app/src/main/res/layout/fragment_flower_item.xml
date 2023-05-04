@@ -89,8 +89,8 @@
 
                 <ImageView
                     android:id="@+id/remove_button"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_remove"
                     app:tint="@color/green" />
 
@@ -102,14 +102,14 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:textColor="@color/green"
-                    android:textSize="18sp"
+                    android:textSize="25sp"
                     android:textStyle="bold"
                     tools:text="1" />
 
                 <ImageView
                     android:id="@+id/add_button"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_add"
                     app:tint="@color/green" />
 
@@ -124,6 +124,7 @@
                 android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/checkout_color"
                 tools:text="5$"
+                android:textSize="18sp"
                 android:textAllCaps="false"
                 app:cornerRadius="15dp" />
 

@@ -45,8 +45,8 @@
 
                 <ImageButton
                     android:id="@+id/back_button"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:src="@drawable/icon_arrow_back_black" />
 
             </androidx.appcompat.widget.Toolbar>
@@ -56,17 +56,16 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="16dp"
         android:background="@drawable/bottom_sheet"
         app:layout_anchorGravity="center"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/flower_information"
