@@ -34,16 +34,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="35dp"
-                android:text="Name"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Name" />
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/back_button"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -58,7 +58,7 @@
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/bottom_sheet"
         app:layout_anchorGravity="center"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">

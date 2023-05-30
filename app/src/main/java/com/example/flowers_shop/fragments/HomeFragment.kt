@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.flowers_shop.R
 import com.example.flowers_shop.adapters.AdvertisingAdapter
 import com.example.flowers_shop.adapters.CategoryAdapter
 import com.example.flowers_shop.adapters.FlowerAdapter
-import com.example.flowers_shop.databinding.ContentHome2Binding
-import com.example.flowers_shop.databinding.FragmentHome1Binding
+import com.example.flowers_shop.databinding.FragmentHomeBinding
 import com.example.flowers_shop.mvvm.HomeViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class HomeFragment : Fragment() {
-    private var binding: FragmentHome1Binding? = null
-
-    private var _contentBinding: ContentHome2Binding? = null
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var flowerAdapter: FlowerAdapter
@@ -34,8 +34,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentHome1Binding.inflate(inflater, container, false)
-        return binding?.root
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
 
 
     }
@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        setUpListeners()
+        setUpListeners()
         setUpObserves()
         setUpAdapters()
         getCategory()
@@ -72,22 +72,22 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    private fun setUpListeners() {
-//        binding.profileImage.setOnClickListener{
-//         findNavController().navigate(R.id.accountFragment)
-//        }
-//        binding.searching.setOnClickListener {
-//            findNavController().navigate(R.id.action_mainFragment2_to_searchFragment2)
-//        }
-//
-//    }
+    private fun setUpListeners() {
+        binding.profileImage.setOnClickListener{
+            findNavController().navigate(R.id.accountFragment)
+        }
+        binding.searching.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment2_to_searchFragment2)
+        }
+
+    }
 
     private fun setUpAdapters() {
         categoryAdapter = CategoryAdapter()
         categoryAdapter.onItemClick = {
             categoriesList(it)
         }
-        binding?.categoryRv?.adapter = categoryAdapter
+        binding.categoryRv.adapter = categoryAdapter
         advertisingAdapter = AdvertisingAdapter()
         advertisingAdapter.onItemClick = {
             val action = MainFragmentDirections.actionMainFragment2ToAdvertisingFragment2(
@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
-        _contentBinding?.advertisingRv?.adapter = advertisingAdapter
+        binding.advertisingRv.adapter = advertisingAdapter
         flowerAdapter = FlowerAdapter()
         flowerAdapter.onItemClick = {
             val action = MainFragmentDirections.actionMainFragment2ToFlowerItemFragment(
@@ -108,7 +108,7 @@ class HomeFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
-        _contentBinding?.flowerRv?.adapter = flowerAdapter
+        binding.flowerRv.adapter = flowerAdapter
     }
 
     private fun getCategory() {
@@ -124,8 +124,11 @@ class HomeFragment : Fragment() {
     }
 
 
+
+
+
     override fun onDestroyView() {
         super.onDestroyView()
-
+        _binding = null
     }
 }

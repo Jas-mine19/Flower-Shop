@@ -49,7 +49,7 @@ class FlowerItemFragment : Fragment() {
 
     private fun setOnClickListener() {
         var number = 1
-        binding.plusButton.setOnClickListener {
+        binding.addButton.setOnClickListener {
             if (number >= 0) {
                 number += 1
                 binding.number.setText(number.toString())
@@ -60,7 +60,7 @@ class FlowerItemFragment : Fragment() {
 
         }
 
-        binding.minusButton.setOnClickListener {
+        binding.removeButton.setOnClickListener {
             if (number >= 1) {
                 number -= 1
                 binding.number.setText(number.toString())
