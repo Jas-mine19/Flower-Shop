@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/basket_background"
-    tools:context=".fragments.BasketFragment">
+    tools:context=".ui.basket.BasketFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,17 +24,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:src="@drawable/icon_arrow_back_black"
-                app:tint = "@color/white"
-                />
+                app:tint="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:letterSpacing="0.05"
                 android:text="Basket"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:letterSpacing="0.05"/>
+                android:textSize="20sp" />
 
         </Toolbar>
 
@@ -54,13 +53,16 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="100dp">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBuy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="8dp"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="15dp"
+            android:visibility="visible"
             android:backgroundTint="@color/white"
             android:text="Buy"
             android:textColor="@color/flower_item"

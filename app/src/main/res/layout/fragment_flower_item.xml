@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/flower_item"
-    tools:context=".fragments.FlowerItemFragment">
+    tools:context=".ui.FlowerItemFragment">
 
     <Toolbar
         android:layout_width="match_parent"
@@ -69,21 +69,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flower_name" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity=""
+            android:layout_marginBottom="30dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flower_information"
-            app:layout_constraintVertical_bias="0.916">
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
+                android:id="@+id/calculate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginStart="15dp"
                 android:orientation="horizontal">
 
@@ -116,20 +117,39 @@
             </LinearLayout>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buy"
-                android:layout_width="100dp"
+            <LinearLayout
+                android:id="@+id/btnPrice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="140dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/checkout_color"
-                tools:text="5$"
-                android:textSize="18sp"
-                android:textAllCaps="false"
-                app:cornerRadius="15dp" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/rectangle_corner"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/button"
+                    android:textSize="22sp"
+                    tools:text="500" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="tjs"
+                    android:textColor="@color/button"
+                    android:textSize="20dp" />
 
 
-        </LinearLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="305dp"
+    android:layout_width="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rectangle_corner"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="295dp"
+        android:layout_width="270dp"
         android:layout_height="108dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -14,7 +18,7 @@
             android:id="@+id/advertising_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/background_advert"
+            tools:src="@drawable/background_advert"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

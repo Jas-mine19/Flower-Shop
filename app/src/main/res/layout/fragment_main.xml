@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".fragments.MainFragment">
+    tools:context=".ui.MainFragment">
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
-    />
+
 
     <FrameLayout
         android:id="@+id/containerBottomNavContent"

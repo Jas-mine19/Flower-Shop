@@ -3,10 +3,9 @@ package com.example.flowers_shop
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.navigation.*
 import androidx.navigation.fragment.NavHostFragment
 import com.example.flowers_shop.databinding.ActivityMainBinding
+import com.example.flowers_shop.common.preferences.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -36,11 +35,11 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        if (!prefManager.isLogin() === true) {
-            graph.setStartDestination(R.id.mainFragment2)
-        } else {
-            graph.setStartDestination(R.id.loginFragment)
-        }
+//        if (!prefManager.isLogin() === true) {
+//            graph.setStartDestination(R.id.mainFragment2)
+//        } else {
+//            graph.setStartDestination(R.id.loginFragment)
+//        }
         navHostFragment.navController.graph = graph
 
 

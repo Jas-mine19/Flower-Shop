@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav"
+    app:startDestination="@id/firstCoverFragment2">
+
+    <fragment
+        android:id="@+id/firstCoverFragment2"
+        android:name="com.example.flowers_shop.ui.FirstCoverFragment"
+        android:label="fragment_first_cover"
+        tools:layout="@layout/fragment_first_cover" />
+</navigation>
